@@ -1,7 +1,6 @@
 import React, { useMemo } from "react";
 import queryString from "query-string";
 import { useLocation } from "react-router";
-import { heroes } from "../../data/heroesData";
 import { HeroCard } from "../heroes/HeroCard";
 import { useForm } from "../hooks/useForm";
 import { getHeroesByName } from "../../selectors/getHeroesByName";
@@ -61,7 +60,7 @@ export const SearchPage = ({ history }) => {
             </div>
           )}
 
-          {query != "" && filteredHeroes.length === 0 && (
+          {query !== "" && filteredHeroes.length === 0 && (
             <div className="alert alert-danger text-dark fw-bolder">
               There is no hero with {query} name!! Try again please!!
             </div>

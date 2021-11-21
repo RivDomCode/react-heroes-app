@@ -1,19 +1,18 @@
 import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../auth/AuthContext";
 import { types } from "../../types/types";
 
 export const LoginPage = ({ history }) => {
   const { dispatch } = useContext(AuthContext);
-
+  const navigate = useNavigate();
   const handleLogin = () => {
-    // history.push("/");
-    // history.replace("/");
     dispatch({
       type: types.login,
       payload: { name: "Pedro" },
     });
 
-    history.replace("/");
+    navigate(-1);
   };
 
   return (

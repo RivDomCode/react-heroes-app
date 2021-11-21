@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link, NavLink, useHistory } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../auth/AuthContext";
 import { types } from "../../types/types";
 
@@ -9,14 +9,16 @@ export const Navbar = () => {
     dispatch,
   } = useContext(AuthContext);
 
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     dispatch({
       type: types.logout,
     });
 
-    history.replace("/login");
+    navigate("/login", {
+      replace: true,
+    });
   };
 
   return (
@@ -27,14 +29,14 @@ export const Navbar = () => {
 
       <div className="navbar-collapse">
         <div className="navbar-nav">
-          <NavLink className="nav-item nav-link" exact to="/marvel">
+          <NavLink className="nav-item nav-link" to="/marvel">
             Marvel
           </NavLink>
 
-          <NavLink className="nav-item nav-link" exact to="/dc">
+          <NavLink className="nav-item nav-link" to="/dc">
             DC
           </NavLink>
-          <NavLink className="nav-item nav-link" exact to="/search">
+          <NavLink className="nav-item nav-link" to="/search">
             Search
           </NavLink>
         </div>

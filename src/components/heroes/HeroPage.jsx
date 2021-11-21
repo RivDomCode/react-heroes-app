@@ -1,24 +1,23 @@
 import React from "react";
-import { Redirect, useParams } from "react-router";
+import { useParams, Navigate, useNavigate } from "react-router";
 import { getHeroById } from "../../selectors/getHeroById";
 
 export const HeroPage = ({ history }) => {
   // const params = useParams(); Esto lo desestructuro para sacar el heroeID
   const { heroeId } = useParams();
-  console.log(heroeId);
+  const navigate = useNavigate();
 
   const hero = getHeroById(heroeId);
-  console.log(hero);
 
   const { superhero, alter_ego, first_appearance, publisher, characters } =
     hero;
 
   const handleReturn = () => {
-    history.goBack();
+    navigate(-1);
   };
 
   if (!hero) {
-    return <Redirect to="./" />;
+    return <Navigate to="./" />;
   }
 
   return (

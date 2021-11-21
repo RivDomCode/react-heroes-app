@@ -1,8 +1,8 @@
 import React from 'react';
 import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
+    BrowserRouter,
+    Routes,
+    Route
 } from "react-router-dom";
 import { LoginPage } from '../components/login/LoginPage';
 
@@ -10,13 +10,13 @@ import { DashRoutes } from './DashRoutes';
 
 export const AppRouter = () => {
     return (
-        <Router>
+        <BrowserRouter>
 
 
-            <Switch>
-                <Route exact path="/login" component={LoginPage} />
-                <Route path="/" component={DashRoutes} />
-            </Switch>
-        </Router>
+            <Routes>
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/*" element={<DashRoutes />} />
+            </Routes>
+        </BrowserRouter>
     )
 }
